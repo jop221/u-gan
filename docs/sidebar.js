@@ -1,8 +1,9 @@
-var e = document.querySelector("#sidenav-open"),
-  t = document.querySelector("#sidenav-close"),
-  o = document.querySelector("#sidenav-button");
-e.addEventListener("transitionend", (function (e) {
-  "transform" === e.propertyName && ((e = "#sidenav-open" === document.location.hash) ? t.focus() : o.focus(), e || history.replaceState(history.state, ""))
-})), e.addEventListener("keyup", (function (e) {
-  "Escape" === e.code && (window.history.length ? window.history.back() : document.location.hash = "")
-}));
+document.addEventListener('click', function(event) {
+  var sidebar = document.querySelector('.sidebar');
+  var sidebarChildren = sidebar.querySelectorAll('*');
+  var isClickInsideSidebar = Array.from(sidebarChildren).includes(event.target);
+
+  if (!isClickInsideSidebar) {
+    sidebar.classList.remove('show');
+  }
+});
